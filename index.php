@@ -35,8 +35,10 @@
             <input type="password" name="password" id="password" placeholder="Mot de passe" required><br><br>
             <button type="submit" class="ui button blue">Se connecter</button><br>
         </form>
+    <?php
+        echo hash('sha256', "admin");
+    ?>
     </div>
-
     
 </body>
 </html>
