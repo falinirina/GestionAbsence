@@ -1,0 +1,28 @@
+.bg-color{
+    background: #202940;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    color: white;
+}
+body{
+    background: #1a2035 !important;
+    color: white;
+}
+.ui.table{
+    color: white;
+    border: none;
+    background-color: #ffffff00;
+}
+#mySidebar{
+    background: linear-gradient(45deg, #202940, #1a2035);
+}
+.w3-bar-block .w3-bar-item{
+    color: #ecd2d2;
+}
+#add-font>#form-ajouter input,#add-font>#form-ajouter select,#form-modifier input,select, .ui.form select,#matiere .ui.form input,
+#setting .ui.form input,#setting2 .ui.form input
+{
+    background-color: transparent;
+    border-color: #b1aeae21;
+    color: white;
+}
+#add-font>#form-ajouter select>option,.ui.form select>option,select>option{background-color: #1a2035;color:white;}

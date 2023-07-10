@@ -1,0 +1,59 @@
+body 
+{
+    background-image: linear-gradient(195deg, #42424a6b 0%, #191919b8 100%);
+}
+footer{
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    font-size: 15px;
+    /* left: 10%; */
+    bottom: 5px;
+    color: white;
+}
+#card-sign {
+    background-image: linear-gradient(195deg, #2185d0 0%, #3795dceb 100%);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(33 133 208) !important;
+    padding: 42px 50px;
+    position: absolute;
+    margin-top: -80px;
+    border-radius: 15px;
+    color: white;
+
+}
+#container
+{
+    margin-top: 130px;
+    margin-left: calc(50% - 182px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+    width: 365px;
+    text-align: center;
+}
+h2
+{
+    font-family: cursive;
+}
+#username{
+    margin-top: 90px;
+}
+#password
+{
+    margin-top: 10px;
+}
+
+.ui.form
+{
+    padding: 25px;
+    font-size: 15px;
+    font-family: cursive;
+    border: 1px solid #80808029;
+    background: white;
+    border-radius: 15px;
+}
+.ui.button
+{
+    width: 100%;
+    margin-top: 40px;
+    padding: 15px;
+    font-size: 15px;
+}

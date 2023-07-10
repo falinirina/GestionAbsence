@@ -1,0 +1,24 @@
+body 
+{
+    background: #1a2035 !important;
+    color: white;
+    transition: 0.3s;
+}
+.bg-color{
+    background: #202940;
+    border-radius:10px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    color: white;
+    animation:0.3s cube;
+}
+.ui.table{
+    color: white;
+    border: none;
+    background-color: #ffffff00;
+}
+#cpro .ui.form input,#cmdp .ui.form input
+{
+    background-color: transparent;
+    border-color: #b1aeae21;
+    color: white;
+}
