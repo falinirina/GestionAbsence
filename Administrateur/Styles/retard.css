@@ -51,7 +51,7 @@
 .filtre-retard
 {
     padding: 15px 15px 50px 15px;
-    background: linear-gradient(45deg, #e91e638c, #ec0b58a1);
+    background: linear-gradient(45deg, #cdcd01ad, #c8cb08d4);
     border-radius: 15px;
     margin-bottom: 30px;
     color: white;
@@ -64,6 +64,8 @@
 }
 .filtre-retard>.ui.button{
     margin-top: 20px;
+    background-color: #3677df;
+    color: white;
 }
 .dateFilter{
     display: flex;

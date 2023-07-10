@@ -13,13 +13,14 @@
                 "departement" => htmlspecialchars($_POST['departement']),
                 "embauche" => htmlspecialchars($_POST['embauche'])
             );
-    
+            
             if (strlen($getData['nom']) > 4 && strlen($getData['adresse']) > 10 && strlen($getData['numero']) >= 10)
             {
                 require_once  'config.php';
-    
+                
                 $data = $bdd->query("SELECT * FROM employe WHERE (nomEmploye='".$getData["nom"]."' AND prenomEmploye='".$getData["prenom"]."' AND sexeEmploye='".$getData["sexe"]."')");
                 $row = $data->rowCount();
+                
                 
                 if ($row == 0)
                 {
@@ -35,17 +36,17 @@
                         "stop" => false,
                         "count" => 0
                     );
-                    while (!$condition['stop'])
+                    while ($condition['stop'] == false)
                     {
                         $check = $bdd->query("SELECT username FROM employe WHERE username='$username'");
                         $check = $check->rowCount();
-                        if ($row == 0) { $condition['stop'] = true; }
-                        else { $condition['count']++; }
+                        if ($check == 0) { $condition['stop'] = true; }
+                        else { 
+                            $condition['count']++;
+                            $username = $username."_".($condition['count']);
+                        }
                     }
-                    if ($condition['count'] != 0)
-                    {
-                        $username = $username."_".((string)$condition['count']);
-                    }
+                    
                     $password = hash('sha256', $username);
                     // Verification Photo
                     if (isset($_FILES['img']))
@@ -70,7 +71,7 @@
                         'numeroEmploye'=>$getData['numero'],
                         'photoEmploye'=>$files,
                         'dateDEmbauche'=>$getData['embauche'],
-                        'departEmploye'=>$getData['departement'],
+                        'departEmploye'=>((int)$getData['departement']),
                         'username'=>$username,
                         'password'=>$password
                     ));

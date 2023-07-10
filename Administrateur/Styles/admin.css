@@ -22,8 +22,7 @@ a{cursor:pointer}
 .pagination a:hover:not(#active) {background-color: #ddd;}
 #search{
     background-color: transparent;
-border-color: #b1b1b1;
-color: white;
+    border-color: #b1b1b1;
 }
 .w3-bar-block .w3-bar-item{padding:16px;font-weight:bold;font-size: 14px;width: 230px;border-radius: 5px;}
 #mySidebar{
@@ -329,4 +328,55 @@ border-radius: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+#nav-logo img {
+    margin-left: -15px;
+    width: 225px;
+    border-radius: 3px;
+}
+
+#cmdp {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00000087;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 80;
+}
+#cmdp>div{
+    width: 350px;
+    height: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#notification{
+    display: none;
+    bottom: 10px;
+    position: fixed;
+    right: 10px;
+    min-height: 100px;
+    min-width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    border: solid #b6a0a05e 5px;
+    animation: 0.5s fromRight;
+    z-index: 100;
+}
+@keyframes fromRight{
+    from {
+        right: -200px;
+    }
 }

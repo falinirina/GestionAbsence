@@ -4,6 +4,7 @@
     {
         $id = htmlspecialchars($_POST['id']);
         require_once "./config.php";
+        require_once "./getDate.php";
         if (isset($_POST['debut']) && isset($_POST['fin']))
         {
             $debut = htmlspecialchars($_POST['debut']);
@@ -21,9 +22,21 @@
             $avance = $bdd->query("SELECT SUM(avanceMinute) FROM `presence` WHERE employePresence=$id");
             $avance = $avance->fetch();
             $avance = $avance[0];
+
+            $debut = $bdd->query("SELECT MIN(jourPresence) FROM `presence` WHERE employePresence=$id");
+            $debut = $debut->fetch();
+            $debut = $debut[0];
+
+            $fin = $bdd->query("SELECT MAX(jourPresence) FROM `presence` WHERE employePresence=$id");
+            $fin = $fin->fetch();
+            $fin = $fin[0];
         }
         ?>
-        
+        <div class="dateMessage">
+            <h4>
+                Résultat du <?= dateTraitement::fullDate(date_create($debut)); ?> au <?= dateTraitement::fullDate(date_create($fin)); ?>
+            </h4>
+        </div>
         <div>
             <div class="bg-color">
                 <div class="top"><h4>Arrivé en retard</h4></div>

@@ -5,13 +5,34 @@
     <input type="password" id="cPass" placeholder="Confirmer mot de passe">
     <div class="lbutton">
         <button class="ui button red">Annuler</button>
-        <button class="ui button blue">Confirmer</button>
+        <button class="ui button blue" disabled>Confirmer</button>
     </div>
 </div>
 <script>
     $("#cmdp .ui.button.red").click(function(){
         $("#cmdp").css('display','none')
         $("#cmdp").html('')
+    })
+    $(".bg-color.ui.form>input").keyup(function(){
+        const aPass=$("#aPass").val()
+        const nPass=$("#nPass").val()
+        const cPass=$("#cPass").val()
+        if (aPass.length > 4 && nPass.length > 4 && cPass.length > 4)
+        {
+            if (nPass != aPass || cPass != aPass)
+            {
+                if (nPass == cPass)
+                {
+                    $("#cmdp .ui.button.blue").removeAttr('disabled')
+                } else {
+                    $("#cmdp .ui.button.blue").attr('disabled', 'true')
+                }
+            } else {
+                $("#cmdp .ui.button.blue").attr('disabled', 'true')
+            }
+        } else {
+            $("#cmdp .ui.button.blue").attr('disabled','true')
+        }
     })
     $("#cmdp .ui.button.blue").click(function(){
         var aPass=$("#aPass").val()
@@ -28,7 +49,7 @@
                         console.log(data)
                         if(data == "done")
                         {
-                            document.location="Traitements/deconnecter.php"
+                            console.log("done")
                         }
                     })
                 }

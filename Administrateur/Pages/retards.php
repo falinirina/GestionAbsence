@@ -8,7 +8,7 @@
   } else {
     require_once "Traitements/config.php";
   }
-  $employe = $bdd->query("SELECT idEmploye ,nomEmploye, prenomEmploye, nomDepartement FROM employe INNER JOIN departement ON employe.departEmploye=departement.idDepartement");
+  $employe = $bdd->query("SELECT idEmploye ,nomEmploye, prenomEmploye, nomDepartement FROM employe INNER JOIN departement ON employe.departEmploye=departement.idDepartement WHERE NOT typeCompte='admin' LIMIT 5");
   $row = $employe->rowCount();
   $employe = $employe->fetchAll();
   $dateNow = date_create();
@@ -26,6 +26,7 @@
       </div>
       <div>
         <button class="ui button blue">Search</button>
+
       </div>
     </div>
     <div id="resultPresence">
@@ -53,13 +54,22 @@
 <div class="cont-employesFilter">
   <div class="listeEmpFilter bg-color">
     <div class="empFilter ui form">
-      <input type="text" name="search" placeholder="Taper ici" id="search">
+      <input type="text" name="search" onkeyup="searchLaunch()" placeholder="Taper ici" id="searchEmpl" >
+      <script>
+        function searchLaunch()
+        {
+          const search = ($("#searchEmpl").val()).trim()
+          $.post("Traitements/rechercheEmploye.php", {search: search}, function(data){
+            $("#tableRes").html(data)
+          })
+        }
+      </script>
     </div>
     <?php
       if ($row > 0)
       {
         ?>
-        <table class="ui table">
+        <table class="ui table" id="tableRes">
           <?php
             foreach ($employe as $data)
             {
@@ -75,7 +85,7 @@
 
       } else {
         ?>
-        <div>No User</div>
+        <div>Pas de donnée</div>
         <?php
       }
     ?>

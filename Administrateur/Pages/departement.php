@@ -28,11 +28,14 @@
                         if (data == 'done') {
                             afficheDepartement();
                             $("#departementText").val("")
+                            notification("Département ajouter avec succès")
                         } else {
-                            alert("Existed")
+                            notification("Ce département éxiste déjà")
                         }
                         $("#listeDep").html(resultat)
                     })
+                } else {
+                    notification("Nom département trop court")
                 }
             })
             function afficheDepartement()

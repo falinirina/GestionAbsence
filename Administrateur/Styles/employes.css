@@ -341,3 +341,9 @@
   font-size: 12px;
   margin-top: 5px;
 }
+.dateMessage {
+  margin-bottom: 20px;
+}
+#resultPresence>.fullDate{
+  margin-top: 15px;
+}

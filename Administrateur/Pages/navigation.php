@@ -11,6 +11,12 @@
     margin-left: 60px;
   }
 </style>
+<div class="bg-color" id="notification">
+  <div class="topToast">Notification</div>
+  <div id="messageToast"></div>
+</div>
+<div id="cmdp">
+</div>
 <div id="deconnexDiv">
   <div class="bg-color">
     <p>Voulez-vous vraiment vous deconnecter</p>
@@ -21,7 +27,7 @@
   </div>
 </div>
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" id="mySidebar">
-  <a class="w3-bar-item w3-button w3-border-bottom w3-large" id="nav-logo" href="#"><div>Anarany</div><div>Entreprise</div></a>
+  <a class="w3-bar-item w3-button w3-border-bottom w3-large" id="nav-logo" href="#"><img src="../logo.png" alt="Logo Entreprise"></a>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
   <a class="w3-bar-item w3-button w3-teal">Gerer les employes</a>
   <a class="w3-bar-item w3-button">Retards et Absences</a>
@@ -62,6 +68,20 @@
       <?php
     }
   ?>
+  var afficheNotif = null
+  function notification(message)
+  {
+    clearTimeout(afficheNotif)
+    $("#notification").css('display', 'none')
+    $("#messageToast").text(message)
+    $("#notification").css('display', 'flex')
+    afficheNotif = setTimeout(notificationHide, 5000)
+  }
+  function notificationHide()
+  {
+    $("#notification").css('display', 'none')
+  }
+
   $("#deconnexDiv .ui.button.red").click(function(){
     $("#deconnexDiv").css('display', 'none')
   })
@@ -91,7 +111,7 @@ function changePage(getindex)
     if (getindex == 2) {$.get("Pages/employes.php", function(data, status){$("#contenue").html(data)});}
     else if (getindex == 3) {$.get("Pages/retards.php", function(data, status){$("#contenue").html(data)});}
     // else if (getindex == 5) {$.get("Pages/absences.php", function(data, status){$("#contenue").html(data)});}
-    else if (getindex == 4) {$("#bg-setting").css('display','flex')}
+    else if (getindex == 4) { changeMdp() }
     else if (getindex == 5) {
       $("#deconnexDiv").css('display', 'flex')
     }
@@ -110,6 +130,13 @@ $(document).ready(function(){
     })
     
 })
+function changeMdp()
+{
+  $.post("Pages/passFormulaire.php", {},function (data){
+    $("#cmdp").html(data)
+    $("#cmdp").css('display','flex')
+  })
+}
 function deconnection(){
   document.location = "Traitements/deconnection.php"
 }

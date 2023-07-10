@@ -21,6 +21,8 @@
         
                 $file = "../../Photos".$info['photoEmploye'];
                 unlink($file);
+                
+                echo "done";
             }
         }
 

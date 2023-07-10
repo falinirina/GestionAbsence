@@ -60,7 +60,6 @@
         <script>
             function absentThis()
             {
-                console.log("teste")
                 $.post("Traitements/addPresence.php", {
                     id: '<?= $_POST['id'] ?>',
                     date: '<?= $_POST['date'] ?>',

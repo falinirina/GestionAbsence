@@ -1,15 +1,16 @@
-$("#ajouter").click(function(){
-  $.post('Traitements/getDepartement.php',{},function(data){
-      if (data == "vide") {
-          alert("Ajouter Departement")    
-      } else {
-          $.post("Traitements/addEmployeForm.php",{},function(data){
-            $("#add-font").html(data)
-            $("#add-font").css('display','flex')
-          })
-      }
-  })
-})
+// $("#ajouter").click(function(){
+//   $.post('Traitements/getDepartement.php',{},function(data){
+//     console.log(data)
+//       if (data == "vide") {
+//           notification("Ajouter au moin un departement")
+//       } else {
+//           $.post("Traitements/addEmployeForm.php",{},function(data){
+//             $("#add-font").html(data)
+//             $("#add-font").css('display','flex')
+//           })
+//       }
+//   })
+// })
 $("#ajouterDep>button").click(function(){
   $.post("Pages/departement.php",{},function(data){
     $("#add-font").html(data)
@@ -54,4 +55,5 @@ function mClose()
 {
   $('#modify').html("")
   $('#modify').css('display','none')
+  
 }

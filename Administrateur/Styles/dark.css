@@ -26,3 +26,6 @@ body{
     color: white;
 }
 #add-font>#form-ajouter select>option,.ui.form select>option,select>option{background-color: #1a2035;color:white;}
+#search{
+    color: white;
+}

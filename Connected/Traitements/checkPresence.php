@@ -14,6 +14,7 @@
             // $fullDateText = dateTraitement::fullDate($date);
 
             $hour = (int)date_format($date,"H");
+            $minute = (int)date_format($date, "i");
             $jour = date_format($date,"Y-m-d");
             $checkMatin = $bdd->query("SELECT * FROM presence WHERE jourPresence='$jour' AND employePresence=$id");
             $checkMatinRow = $checkMatin->rowCount();
@@ -27,9 +28,18 @@
                     {
                         if ($hour >= 7)
                         {
-                        ?>
-                        <button id="entree" class='ui button green'>Entree Matin</button>
-                        <?php
+                            if ($hour < 10)
+                            {
+                                ?>
+                                <button id="entree" class='ui button green'>Entree Matin</button>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="message">
+                                    Entrée trop en retard, veuillez contacter l'Administrateur
+                                </div>
+                                <?php
+                            }
                         } else {
                             ?>
                                 <div class="message">
@@ -74,13 +84,27 @@
                         {
                             if ($checkMatin['matin'] == 'oui')
                             {
+                                if ($hour < 10)
+                                {
+                                    ?>
+                                    <div class="message">La sortie commence à partir de 10h ou contacter votre Administrateur</div>
+                                    <?php
+                                } else {
                                 ?>
                                     <button id="sortie" class='ui button red'>Sortie Matin</button>
                                 <?php
+                                }
                             } else {
-                                ?>
-                                    <button id="sortie" class='ui button red'>Sortie Apres-Midi</button>
-                                <?php
+                                if ($hour < 16)
+                                {
+                                    ?>
+                                    <div class="message">La sortie commence à partir de 16h ou contacter votre Administrateur</div>
+                                    <?php
+                                } else {
+                                    ?>
+                                        <button id="sortie" class='ui button red'>Sortie Apres-Midi</button>
+                                    <?php
+                                }
                             }
                         } else {
                             if ($checkMatin['matin'] == "oui")
@@ -107,14 +131,33 @@
                                     </div>
                                     <?php
                                     } else {
-                                    ?>
-                                    <div class="message">
-                                        Bonjour, La presence commence à partir de 13h
-                                    </div>
-                                    <script>
-                                        setTimeout(checkPresence,5000);
-                                    </script>
-                                    <?php
+                                        if ($hour < 12)
+                                        {
+                                            ?>
+                                            <div class="message">
+                                                Bonne journée
+                                            </div>
+                                            <?php
+                                        } else {
+                                            if ($hour < 13 && $minute < 30)
+                                            {
+                                                ?>
+                                                <div class="message">
+                                                    Bonne journée
+                                                </div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <div class="message">
+                                                    La presence du midi commence à partir de 13h
+                                                </div>
+                                                <script>
+                                                    setTimeout(checkPresence,5000);
+                                                </script>
+                                                <?php
+
+                                            }
+                                        }
 
                                     }
                                 }
@@ -135,9 +178,16 @@
                             else {
                                 if ($checkMidi['heureSortie'] == null)
                                 {
-                                    ?>
-                                        <button id="sortie" class='ui button red'>Sortie Apres-Midi</button>
-                                    <?php
+                                    if ($hour < 16)
+                                    {
+                                        ?>
+                                        <div class="message">La sortie commence à partir de 16h ou contacter votre Administrateur</div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                            <button id="sortie" class='ui button red'>Sortie Apres-Midi</button>
+                                        <?php
+                                    }
                                 } else {
                                     ?>
                                     <div class="message">

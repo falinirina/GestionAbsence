@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/Semantic_UI/semantic.css">
     <link rel="stylesheet" href="Styles/connecter.css">
-    <link rel="shortcut icon" href="favicon.ico" type="./logo.jpg">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <title>Se Connecter</title>
 </head>
 <body>
@@ -24,9 +24,12 @@
         #username::placeholder,#password::placeholder{color: grey;}
     </style>
     <div id="container">
+        <div class="logo">
+            <img src="./logo.png" alt="Logo">
+        </div>
         <form action="connection.php" class="ui form" method="post">
             <div id="card-sign">
-                <h2><b>Site Web</b></h2>
+                <h2><b>Identifiez-Vous</b></h2>
             </div>
             <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required><br><br>
             <input type="password" name="password" id="password" placeholder="Mot de passe" required><br><br>
@@ -34,12 +37,6 @@
         </form>
     </div>
 
-    <footer>
-        <div>
-            © <?php echo date('Y') ?>, made by
-            <a href=""><b>Team 5</b></a>
-            for a better web.
-        </div>
-    </footer>
+    
 </body>
 </html>

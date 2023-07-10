@@ -116,24 +116,27 @@
                         processData: false,
                         success:function(response)
                         {
-                            $("#resultatop").html(response)
                             if(response=='done'){
                                 $("#add-font").css('display','none')
                                 afficheData();
                                 $("#add-font").html('')
+                                notification("Employé ajouter avec succès")
                             } else {
-                                console.log("Existed")
+                                notification("Cette employe existe déjà dans la base de donnée")
                             }
                         }
                     })
                 } else {
                     $("#numero").focus()
+                    notification("Numero incorrect")
                 }
             } else {
                 $("#adresse").focus()
+                notification("Adresse trop court")
             }
         } else {
             $("#nom").focus()
+            notification("Nom trop court")
         }
     })
 </script>

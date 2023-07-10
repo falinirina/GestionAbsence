@@ -33,6 +33,11 @@
                         $.post("Traitements/delEmployeOp.php",{employe:"<?=$id?>", password: password, user: "<?= $_SESSION['administrateur'] ?>"},function(data){
                             $('#delete').html("")
                             $('#delete').css('display','none')
+                            if (data == 'done') {
+                                notification("Employé supprimé avec succès")
+                            } else {
+                                notification("Erreur de suppression de l'employé")
+                            }
                             afficheData()
                         })
                     }

@@ -14,7 +14,10 @@
 </div>
 <div class="content">
     <nav>
-        <div>Module Utilisateur</div>
+        <div class="logoDiv">
+            <img src="../logo.png" alt="Logo" class="logoTop">
+            <div>Module Utilisateur</div>
+        </div>
         <div class="iIcon">
             <div class="dark">
                 <div style="margin-top: 10px;"><i class="icon ui moon"></i></div>
@@ -187,6 +190,7 @@
     .lbutton{
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
     }
     #cmdp>div,#cpro>div,#cPhoto>div{
         padding: 10px;

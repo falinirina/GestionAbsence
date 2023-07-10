@@ -43,8 +43,9 @@
                                 if (data == 'done')
                                 {
                                     afficheDepartement()
+                                    notification("Département supprimé avec succès")
                                 } else {
-                                    alert("Employe dans le departement")
+                                    notification("Il y a des employés dans ce département")
                                 }
                             })
                         }

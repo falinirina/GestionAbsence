@@ -115,13 +115,21 @@
                             $.post("Traitements/modEmployeOp.php",{
                             id:data['id'],nom:data['nom'],prenom:data['prenom'],adresse:data['adresse'],sexe:data['sexe'],numero:data['numero'],embauche:data['embauche'],departement:data['departement']
                         },function(data){
-                            $("#test").html(data)
-                            if (data == "done") mClose()
-                            afficheData()
+                            if (data == "done") {
+                                mClose()
+                                afficheData()
+                                notification("Employé modifié avec succès")
+                            } else {
+                                notification("Il y a une erreur lors de la modification")
+                            }
                         })
                         }
                     }
-                }
+                } else {
+                    notification("Adresse trop court")
+            }
+            } else {
+                notification("Nom trop court")
             }
         })
     </script>

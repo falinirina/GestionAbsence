@@ -5,9 +5,9 @@
     {
         // echo "here";
         session_start();
-        if(isset($_SESSION['utilisateur']))
+        if(isset($_SESSION['administrateur']))
         {
-            $employe = $_SESSION['infoUtilisateur']['id'];
+            $employe = $_SESSION['administrateur'];
             $aPass=htmlspecialchars($_POST['aPass']);
             $nPass=htmlspecialchars($_POST['nPass']);
             $cPass=htmlspecialchars($_POST['cPass']);
@@ -20,15 +20,16 @@
                 {
                     if($cPass != $aPass)
                     {
-                        require_once "../../Administrateur/Traitements/config.php";
-                        $getpass=$bdd->query("SELECT password FROM employe WHERE idEmploye='$employe'");
+                        require_once "./config.php";
+                        $getpass=$bdd->query("SELECT password FROM employe WHERE username='$employe'");
                         $getpass=$getpass->fetch();
                         $getpass=$getpass['password'];
                         $aPass = hash('sha256',$aPass);
+
                         if($aPass == $getpass)
                         {
                             $cPass = hash('sha256',$cPass);
-                            $bdd->query("UPDATE employe SET password='$cPass' WHERE idEmploye='$employe'");
+                            $bdd->query("UPDATE employe SET password='$cPass' WHERE username='$employe'");
                             echo "done";
                         }
                     }

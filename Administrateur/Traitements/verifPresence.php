@@ -17,12 +17,13 @@
             require_once "./getDate.php";
             $fullDateText = dateTraitement::fullDate($dateC);
             ?>
-            <div><?= $fullDateText; ?></div>
+            <h4 class="fullDate"><?= $fullDateText; ?></h4>
             <?php
 
             if ($dateJour != 7)
             {
                 $dateN = date_create();
+                $hour = (int)date_format($dateN, 'H');
                 $dateN = date_format($dateN, "Y-m-d");
     
                 foreach ($employe as $mpiasa)
@@ -31,9 +32,40 @@
                     $nom = $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye'];
                     if ($date == $dateN)
                     {
-                        echo "Eto";
+                        // echo $hour;
+                        if ($hour > 7 && $hour < 12)
+                        {
+                            $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id");
+                            $dataRow = $data->rowCount();
+                            if ($dataRow == 0)
+                            {
+                                ?>
+                                <div>
+                                    <div><?= $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye']; ?></div>
+                                    <button class="ui button red" onclick="absentMatin('<?= $id ?>')">Absent</button>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            if ($hour > 13 && $hour < 18)
+                            {
+                                $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id AND matin='non'");
+                                $dataRow = $data->rowCount();
+                                if ($dataRow == 0)
+                                {
+                                    ?>
+                                    <div>
+                                        <div><?= $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye']; ?></div>
+                                        <button class="ui button red" onclick="absentMidi('<?= $id ?>')">Absent</button>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+
+
                     } else {
-                        $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id");
+                        $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id AND absent='non'");
                         $dataRow = $data->rowCount();
                         // echo $dataRow;
                         if ($dataRow == 0)
@@ -158,6 +190,36 @@
     
     ?>
     <script>
+        function absentMatin(getId)
+        {
+            $.post("Traitements/addPresence.php", {
+                    id: getId,
+                    date: '<?= $date ?>',
+                    absent: 'oui',
+                    matin: 'oui'
+                }, function(data){
+                    console.log(data)
+                    if (data == "done")
+                    {
+                        refreshView()
+                    }
+                })
+        }
+        function absentMidi(getId)
+        {
+            $.post("Traitements/addPresence.php", {
+                    id: getId,
+                    date: '<?= $date ?>',
+                    absent: 'oui',
+                    matin: 'non'
+                }, function(data){
+                    console.log(data)
+                    if (data == "done")
+                    {
+                        refreshView()
+                    }
+                })
+        }
         function samediAdd(getId, nom)
         {
             $.post("Traitements/getFormPres.php", {
