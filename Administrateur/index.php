@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../Styles/W3/w3-theme-teal.css">
     <link rel="stylesheet" href="Styles/admin.css">
     <link rel="stylesheet" href="Styles/retard.css">
+    <link rel="shortcut icon" href="favicon.ico" type="../logo.jpg">
     <?php
         if (isset($_SESSION['darkMode']))
         {

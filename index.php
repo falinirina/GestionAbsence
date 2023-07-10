@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/Semantic_UI/semantic.css">
     <link rel="stylesheet" href="Styles/connecter.css">
+    <link rel="shortcut icon" href="favicon.ico" type="./logo.jpg">
     <title>Se Connecter</title>
 </head>
 <body>
