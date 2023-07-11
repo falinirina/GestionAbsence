@@ -96,7 +96,7 @@
 </div>
 <script>
   $("#pageNow").text("retards et absences")
-  $("#pageNow2").text("Gerer les retards et absences")
+  $("#pageNow2").text("Retards et absences")
   function viewEmploye(getId)
   {
     const id = getId

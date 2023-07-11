@@ -26,14 +26,22 @@
                     <div class='contentDepartement'>
                         <div><b><?= $departement['nomDepartement'] ?></b></div>
                         <div>
-                            <button class="ui button green" onclick="modifierDepartement('<?= $departement['idDepartement']; ?>')"><i class="ui icon edit"></i></button>
+                            <button class="ui button green" onclick="modifierDepartement('<?= $departement['idDepartement']; ?>', '<?= $departement['nomDepartement'] ?>')"><i class="ui icon edit"></i></button>
                             <button class="ui button red" onclick="supprimerDepartement('<?= $departement['idDepartement']; ?>')"><i class="ui icon close"></i></button>
                         </div>
                     </div>
                     <script>
-                        function modifierDepartement(getId)
+                        function modifierDepartement(getId, getNom)
                         {
                             const idDep = getId
+                            const nom = getNom
+                            $.post("Traitements/modDepartementForm.php",{
+                                id: idDep,
+                                nom: nom
+                            }, function (data){
+                                $("#modplusplus").html(data)
+                                $("#modplusplus").css('display', 'flex')
+                            })
                             
                         }
                         function supprimerDepartement(getId)

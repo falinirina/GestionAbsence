@@ -83,7 +83,7 @@
                     $(".mButton .ui.button.blue").attr('disabled', 'true')
                 }
         }
-        $("#form-modifier input").keyup(function(){
+        $("#form-modifier input").keyup(function(){ 
             // console.log("this")
             enableBtn()
         })
@@ -112,17 +112,32 @@
                         data['sexe'] != "<?= $employe['sexeEmploye']; ?>" || data['numero'] != "<?= $employe['numeroEmploye']; ?>" || data['embauche'] != "<?= $employe['dateDEmbauche']; ?>" ||
                         data['departement'] != "<?= $employe['departEmploye']; ?>")
                         {
-                            $.post("Traitements/modEmployeOp.php",{
-                            id:data['id'],nom:data['nom'],prenom:data['prenom'],adresse:data['adresse'],sexe:data['sexe'],numero:data['numero'],embauche:data['embauche'],departement:data['departement']
-                        },function(data){
-                            if (data == "done") {
-                                mClose()
-                                afficheData()
-                                notification("Employé modifié avec succès")
-                            } else {
-                                notification("Il y a une erreur lors de la modification")
-                            }
-                        })
+                            var formData = new FormData()
+                            formData.append('id',data['id'])
+                            formData.append('nom',data['nom'])
+                            formData.append('prenom',data['prenom'])
+                            formData.append('adresse',data['adresse'])
+                            formData.append('numero',data['numero'])
+                            formData.append('embauche',data['embauche'])
+                            formData.append('departement',data['departement'])
+                            formData.append('sexe',data['sexe'])
+                            $.ajax({
+                                url: 'Traitements/modEmployeOp.php',
+                                type: 'post',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success:function(response)
+                                {
+                                    if(response=='done'){
+                                        mClose()
+                                        afficheData()
+                                        notification("Employé modifié avec succès")
+                                    } else {
+                                        notification("Il y a une erreur lors de la modification")
+                                    }
+                                }
+                            })
                         }
                     }
                 } else {

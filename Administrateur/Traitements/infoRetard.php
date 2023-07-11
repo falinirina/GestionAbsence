@@ -32,6 +32,7 @@
             $fin = $fin[0];
         }
         ?>
+        <hr>
         <div class="dateMessage">
             <h4>
                 Résultat du <?= dateTraitement::fullDate(date_create($debut)); ?> au <?= dateTraitement::fullDate(date_create($fin)); ?>

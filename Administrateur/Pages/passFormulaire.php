@@ -46,10 +46,14 @@
                 {
                     $.post("Traitements/changePass.php",{aPass:aPass, nPass:nPass, cPass:cPass},function(data)
                     {
-                        console.log(data)
                         if(data == "done")
                         {
-                            console.log("done")
+                            $("#cmdp").html()
+                            $("#cmdp").css('display', 'none')
+
+                            notification("Mot de passe changé avec succès")
+                        } else {
+                            notification("Verifier votre mot de passe")
                         }
                     })
                 }

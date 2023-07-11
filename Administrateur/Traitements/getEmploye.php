@@ -5,14 +5,31 @@
     if(isset($_POST['filtre']) || isset($_POST['search']))
     {
         $word = htmlspecialchars($_POST['search']);
-        if ($word==""){initial($bdd);}
+        if ($word==""){
+            $nbrdata=Employe::dataCount($bdd);
+            ?>
+            <div class="nbrEmploye">
+                <div>Nombre Total d'employe:</div>
+                <div><b><?= $nbrdata ?></b></div>
+            </div>
+            <?php
+            initial($bdd);
+        }
         else{
             search($bdd,$word);
         }
     } else {
         $nbrdata=Employe::dataCount($bdd);
         if($nbrdata==0){echo nodata();}
-        else{initial($bdd);}
+        else{
+            ?>
+            <div class="nbrEmploye">
+                <div>Nombre Total d'employe:</div>
+                <div><b><?= $nbrdata ?></b></div>
+            </div>
+            <?php
+            initial($bdd);
+        }
     }
 
     function nodata()

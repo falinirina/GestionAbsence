@@ -1,6 +1,6 @@
 $("#ajouter").click(function(){
   $.post('Traitements/getDepartement.php',{},function(data){
-    console.log(data)
+    // console.log(data)
       if (data == "vide") {
           notification("Ajouter au moin un departement")
       } else {

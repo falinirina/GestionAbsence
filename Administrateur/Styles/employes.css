@@ -349,3 +349,37 @@
 #resultPresence>.fullDate{
   margin-top: 15px;
 }
+.nbrEmploye {
+  display: flex;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#modplusplus{
+  display: none;
+    position: fixed;
+    width: calc(100% - 250px);
+    top: 0;
+    left: 250px;
+    background-color: #0000008f;
+    height: 100%;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+}
+#modplusplus>div{
+  animation: cube 0.3s;
+    padding: 10px;
+    border-radius: 10px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#modplusplus>div>.ui.form>.ui.label{
+  width: 100%;
+  text-align: center;
+}
