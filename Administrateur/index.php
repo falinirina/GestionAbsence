@@ -32,7 +32,7 @@
     <?php include "Pages/navigation.php" ?>
     <div id="contenue">
         <?php
-            require_once "Pages/retards.php";
+            require_once "Pages/employes.php";
             // var_dump($_SESSION);
         ?>
     </div>

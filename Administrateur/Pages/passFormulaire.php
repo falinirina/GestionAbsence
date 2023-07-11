@@ -4,8 +4,8 @@
     <input type="password" id="nPass" placeholder="Nouveau mot de passe">
     <input type="password" id="cPass" placeholder="Confirmer mot de passe">
     <div class="lbutton">
-        <button class="ui button red">Annuler</button>
         <button class="ui button blue" disabled>Confirmer</button>
+        <button class="ui button red">Annuler</button>
     </div>
 </div>
 <script>

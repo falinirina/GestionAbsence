@@ -66,8 +66,9 @@
                             }
                         } else {
                             ?>
+
                                 <div class="message">
-                                    Bonjour, La presence commence à partir de 13h
+                                    Bonne Soirée
                                 </div>
                                 <script>
                                     setTimeout(checkPresence,5000);
@@ -80,7 +81,7 @@
                     if ($checkMatinRow == 1)
                     {
                         $checkMatin = $checkMatin->fetch();
-                        if ($checkMatin['heureSortie'] == null)
+                        if ($checkMatin['heureSortie'] == null && $checkMatin['absent'] == 'non')
                         {
                             if ($checkMatin['matin'] == 'oui')
                             {
@@ -176,7 +177,7 @@
                         {
                             if ($checkMidi['matin'] == "oui") { }
                             else {
-                                if ($checkMidi['heureSortie'] == null)
+                                if ($checkMidi['heureSortie'] == null && $checkMidi['absent'] == 'non')
                                 {
                                     if ($hour < 16)
                                     {
@@ -189,11 +190,15 @@
                                         <?php
                                     }
                                 } else {
+                                    if ($hour > 15)
+                                    {
                                     ?>
+                                    
                                     <div class="message">
                                         Bonne Soirée
                                     </div>
                                     <?php
+                                    }
                                 }
                             }
                         }

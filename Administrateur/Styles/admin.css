@@ -357,6 +357,7 @@ border-radius: 15px;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    animation: cube 0.3s;
 }
 #notification{
     display: none;

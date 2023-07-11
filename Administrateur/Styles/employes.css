@@ -301,6 +301,7 @@
   .leftEmployeForm
   {
     width: 420px;
+    
   }
   .leftEmployeForm>.info-employes>.employeFlexBox>input, .leftEmployeForm>.info-employes>.employeFlexBox>select, .leftEmployeForm>.info-employes>.employeFlexBox>.employeFlexBoxDiv,
   .leftEmployeForm>.info-employes>.employeFlexBox>.employeFlexBoxDiv>label {
@@ -329,6 +330,7 @@
   }
 #listeDep{
   width: 100%;
+  text-align: center;
 }
 #listeDep>.contentDepartement{
   display: flex;
