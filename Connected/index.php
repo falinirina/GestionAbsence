@@ -28,7 +28,7 @@
     </style>
     <div id="contenue">
         <?php
-            include "pages/home.php";
+            include "Pages/home.php";
         ?>
     </div>
 </body>
