@@ -4,7 +4,7 @@
         $bdd = new PDO('mysql:host=localhost;dbname=employeProject', "root", "");
     }catch(Exception $e)
     {
-        die('ERROR'.$e->getMessage());
+        echo "Erreur de la connection a la base de donnee";
     }
 
 ?>
