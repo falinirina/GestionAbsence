@@ -4,9 +4,11 @@
     {
         ?>
         <div id="form-departement" class="form01 ui form bg-color">
-            <h3 class="title">Departements</h3>
+            <div class="title">
+                <h3>Départements</h3>
+            </div>
             <div class="addDepForm">
-                <input type="text" name="departement" id="departementText">
+                <input type="text" name="departement" id="departementText" placeholder="Entrer le nom du département">
                 <button id="addDepBtn" class="ui blue button">Ajouter</button>
             </div>
             <hr style="width: 100%;">

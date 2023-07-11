@@ -40,6 +40,13 @@ function modify(getelement)
     })
 }
 
+function resetKey(getId)
+{
+    $.post('Traitements/resetKeyForm.php',{employe:getId},function(data){
+        $('#delete').html(data)
+        $('#delete').css('display','flex')
+    })
+}
 
 var wCountSearch = 0;
 $("#search").keyup(function(){

@@ -9,7 +9,9 @@
         {
             ?>
             <div class="bg-color">
-                <div class="top"><?= $fullDateText; ?></div>
+                <div class="title">
+                    <h4><?= $fullDateText; ?></h4>
+                </div>
                 <div class="top2"><?= $_POST['nom'] ?></div>
                 <div class="ui form">
                     <label class="ui label" for="sortie">Sortie</label>
@@ -26,7 +28,9 @@
         } else {
             ?>
             <div class="bg-color">
-                <div class="top"><?= $fullDateText; ?></div>
+                <div class="title">
+                    <h4><?= $fullDateText; ?></h4>
+                </div>
                 <div class="top2"><?= $_POST['nom'] ?></div>
                 <div class="ui form">
                     <label class="ui label" for="sortie">Sortie</label>

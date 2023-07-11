@@ -56,6 +56,40 @@
                     }
                     echo "done";
                 }
+            } else if ($check == 1)
+            {
+                if (isset($_FILES['img']))
+                {
+                    $username = $bdd->query("SELECT username FROM employe WHERE idEmploye=".$getData['id']);
+                    $username = $username->fetch();
+                    $username = $username[0];
+                    $files = "p_".date("djY_hisa")."-".$username.".jpg";
+                } else {
+                    if ($getData['sexe'] == 'M')
+                    {
+                        $files = "user-profile.png";
+                    } else {
+                        $files = "user-profile-woman.png";
+                    }
+                }
+
+                $update = $bdd->prepare("UPDATE employe SET adresseEmploye=:adresse, numeroEmploye=:numero, dateDEmbauche=:embauche, departEmploye=:departement, photoEmploye=:photo WHERE idEmploye=".$getData['id']);
+                $res = $update->execute(array(
+                    'adresse'=>$getData['adresse'],
+                    'numero'=>$getData['numero'],
+                    'embauche'=>$getData['embauche'],
+                    'departement'=>$getData['departement'],
+                    'photo'=>$files
+                ));
+                if ($res) {
+                    if (isset($_FILES['img']))
+                    {
+                        $target_dir = "../../Photos/";
+                        $target_file = $target_dir . $files;
+                        move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+                    }
+                    echo "done";
+                }
             }
             // var_dump($_POST);
     

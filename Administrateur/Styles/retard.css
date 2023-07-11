@@ -54,7 +54,6 @@
 .filtre-retard
 {
     padding: 15px 15px 50px 15px;
-    background: linear-gradient(45deg, #cdcd01ad, #c8cb08d4);
     border-radius: 15px;
     margin-bottom: 30px;
     color: white;
@@ -67,8 +66,8 @@
 }
 .filtre-retard>.ui.button{
     margin-top: 20px;
-    background-color: #3677df;
-    color: white;
+    /* background-color: #3677df;
+    color: white; */
 }
 .dateFilter{
     display: flex;
@@ -151,6 +150,7 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    margin-top: 65px;
 }
 #verif-presence .top{
     margin-bottom: 15px;
@@ -161,6 +161,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    padding: 10px;
     width: 100%;
     margin-top: 10px;
 }
@@ -204,4 +205,37 @@
 #addPresence .absent>.ui.button{
     width: 100%;
     margin-top: 25px;
+}
+.noDataEmploye{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+    font-size: 18px;
+}
+.selectUser>h3{
+    font-family: cursive;
+}
+#verifPresenceDiv .title{
+    width: 570px;
+    margin-left: -10px !important;
+    margin-top: -10px !important;
+}
+#verifPresenceDiv .ui.label{
+    width: 140px;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 13px;
+}
+#datePresence {
+    text-align: center;
+}
+#addPresence .top2{
+    margin-top: 50px;
+}
+#addPresence .title{
+    width: 280px;
+    margin-left: -10px !important;
+    margin-top: -10px !important;
 }

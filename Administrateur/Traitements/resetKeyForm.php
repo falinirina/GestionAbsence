@@ -11,7 +11,7 @@
         ?>
         <div class="bg-color">
             <div class="title">
-                <h4>Suppression d'employé</h4>
+                <h4>Réstauration du mot de passe</h4>
             </div>
             <p style="text-align: center; margin-top: 55px;"><b><?=$employe['nomEmploye']." ".$employe['prenomEmploye'];?></b></p>
             <div class="ui form">
@@ -31,13 +31,13 @@
                     var password = $("#passwordMod").val()
                     if (password != "")
                     {
-                        $.post("Traitements/delEmployeOp.php",{employe:"<?=$id?>", password: password, user: "<?= $_SESSION['administrateur'] ?>"},function(data){
+                        $.post("Traitements/resetKeyOp.php",{employe:"<?=$id?>", password: password, user: "<?= $_SESSION['administrateur'] ?>"},function(data){
                             $('#delete').html("")
                             $('#delete').css('display','none')
                             if (data == 'done') {
-                                notification("Employé supprimé avec succès")
+                                notification("Mot de passe réstauré avec succès")
                             } else {
-                                notification("Erreur de suppression de l'employé")
+                                notification("Erreur de réstauration du mot de passe de l'employé")
                             }
                             afficheData()
                             // console.log(data)

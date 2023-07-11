@@ -35,7 +35,20 @@
         <hr>
         <div class="dateMessage">
             <h4>
-                Résultat du <?= dateTraitement::fullDate(date_create($debut)); ?> au <?= dateTraitement::fullDate(date_create($fin)); ?>
+                <?php
+                    if ($debut == $fin)
+                    {
+                        ?>
+                            Résultat du <?= dateTraitement::fullDate(date_create($debut)); ?>
+                        <?php
+                    } else {
+                        ?>
+                            Résultat du <?= dateTraitement::fullDate(date_create($debut)); ?> au <?= dateTraitement::fullDate(date_create($fin)); ?>
+                        <?php
+                    }
+
+                ?>
+               
             </h4>
         </div>
         <div>

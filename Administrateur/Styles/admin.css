@@ -51,12 +51,24 @@ a{cursor:pointer}
 }
 #form-search{
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row-reverse; */
 }
 #form-search button{
-    margin-left: 5px;
+    margin-right: 0px;
     text-align: center;
     padding-left: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#form-search input{
+    width: 175px;
+    transition: 0.3s;
+    margin-right: 0px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#form-search input:focus{
+    width: 250px;
 }
 #contenue{
     margin-top: 50px;
@@ -253,7 +265,7 @@ align-items: center;
 .mButton{
 margin-top: 20px;
 display: flex;
-flex-direction: row;
+flex-direction: row-reverse;
 width: 100%;
 justify-content: space-between;
 }
@@ -383,4 +395,37 @@ border-radius: 15px;
     from {
         right: -200px;
     }
+}
+#nav-pages table{
+    font-size: 18px;
+}
+#aPass{
+    margin-top: 65px;
+}
+#cmdp .title{
+    width: 350px;
+    margin-top: -15px !important;
+}
+#cmdp .lbutton{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.topToast
+{
+    display: flex;
+    /* margin-bottom: 36px; */
+    background-color: #9c27b0;
+    margin-left: 0px !important;
+    border-radius: 5px 5px 0px 0;
+    height: 35px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: -56px;
+}
+#messageToast
+{
+    margin-top: 30px;
 }

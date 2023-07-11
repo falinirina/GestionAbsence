@@ -22,5 +22,13 @@ body{background-color: #f0f2f5 !important;}
     color: black;
 }
 #search{
-    color: black;
+    color: #000000;
+    font-weight: bold;
+}
+.filtre-employes, .filtre-retard{
+    padding: 15px 15px 50px 15px;
+    background: linear-gradient(45deg, #a21ee98c, #9d0beca1);
+}
+.ajouter-label {
+    background: linear-gradient(45deg, #a21ee9, #9d0bec);
 }

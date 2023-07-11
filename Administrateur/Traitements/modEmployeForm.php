@@ -78,6 +78,9 @@
                 $("#mAdd-photo").attr('src',url)
             }
         })
+        $("#mEmbauche").change(function(){
+            enableBtn()
+        })
         $("#mSexe").change(function(){
             const sexe = $(this).val()
             if (sexe == 'F')
@@ -144,7 +147,7 @@
                 embauche: $("#mEmbauche").val(),
                 departement: ($("#mDepartement").val()).substr(6)
             }
-            console.log(data)
+            // console.log(data)
             if (data['nom'].length > 4)
             {
                 
@@ -174,7 +177,7 @@
                                 processData: false,
                                 success:function(response)
                                 {
-                                    console.log(response)
+                                    // console.log(response)
                                     if(response=='done'){
                                         mClose()
                                         afficheData()
@@ -196,7 +199,7 @@
                                 processData: false,
                                 success:function(response)
                                 {
-                                    console.log(response)
+                                    // console.log(response)
                                     if(response=='done'){
                                         mClose()
                                         afficheData()

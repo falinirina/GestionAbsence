@@ -29,7 +29,7 @@
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" id="mySidebar">
   <a class="w3-bar-item w3-button w3-border-bottom w3-large" id="nav-logo" href="#"><img src="../logo.png" alt="Logo Entreprise"></a>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Fermer <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal">Gerer les employes</a>
+  <a class="w3-bar-item w3-button w3-purple">Gerer les employes</a>
   <a class="w3-bar-item w3-button">Retards et Absences</a>
   <a class="w3-bar-item w3-button" style="bottom: 54px;position: absolute;">Changer Mot de passe<i style="float: right;" class="ui icon key"></i></a>
   <a class="w3-bar-item w3-button" style="bottom: 0;position: absolute;">Deconnecter<i style="float: right;" class="ui icon logout"></i></a>
@@ -58,6 +58,7 @@
     </div>
   </div>
 </div>
+<div id="add-font"></div>
 <script>
   <?php
     if ($_SESSION["darkMode"])
@@ -104,11 +105,11 @@
   })
 function changePage(getindex)
 {
-    console.log(getindex)
+    // console.log(getindex)
     if (getindex!=1 && getindex != 0 && getindex != 4 && getindex != 5)
     {
-        $(".w3-bar-item.w3-button.w3-teal").attr("class","w3-bar-item w3-button")
-        $(".w3-bar-item.w3-button:nth-child("+(getindex+1)+")").attr("class","w3-bar-item w3-button w3-teal")
+        $(".w3-bar-item.w3-button.w3-purple").attr("class","w3-bar-item w3-button")
+        $(".w3-bar-item.w3-button:nth-child("+(getindex+1)+")").attr("class","w3-bar-item w3-button w3-purple")
     }
     // if (getindex == 2) {$.get("Pages/dashboard.php", function(data, status){$("#contenue").html(data)});}
     if (getindex == 2) {$.get("Pages/employes.php", function(data, status){$("#contenue").html(data)});}

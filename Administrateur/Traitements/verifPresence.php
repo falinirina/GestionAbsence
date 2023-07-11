@@ -4,12 +4,12 @@
     {
         $date = htmlspecialchars($_POST['date']);
         require_once "./config.php";
-        $employe = $bdd->query("SELECT idEmploye,nomEmploye,prenomEmploye FROM employe WHERE NOT typeCompte='admin'");
+        $employe = $bdd->query("SELECT idEmploye,nomEmploye,prenomEmploye FROM employe WHERE NOT typeCompte='admin' AND dateDEmbauche<='$date'");
 
         $employeRow = $employe->rowCount();
         if ($employeRow == 0)
         {
-            echo "No data";
+            echo "Tout est en ordre";
         } else {
             $dateC = date_create($date);
             $dateJour = date_format($dateC, "N");
@@ -186,7 +186,7 @@
                     }
                 }
             } else {
-                echo "Dimanche";
+                echo "Pas de travail";
             }
         }
     }

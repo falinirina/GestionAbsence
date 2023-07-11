@@ -24,16 +24,34 @@
         #username::placeholder,#password::placeholder{color: grey;}
     </style>
     <div id="container">
-        <div class="logo">
-            <img src="./logo.png" alt="Logo">
-        </div>
         <form action="connection.php" class="ui form" method="post">
             <div id="card-sign">
-                <h2><b>Identifiez-Vous</b></h2>
+                <div class="logo">
+                    <img src="./logo.png" alt="Logo">
+                </div>
             </div>
-            <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required><br><br>
+            <!-- <h2><b>Identifiez-Vous</b></h2> -->
+            <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required <?php 
+                if (isset($_GET['us']))
+                {
+                    echo "value='".$_GET['us']."'";
+                }
+                ?>><br><br>
             <input type="password" name="password" id="password" placeholder="Mot de passe" required><br><br>
-            <button type="submit" class="ui button blue">Se connecter</button><br>
+            <div style="width: 100%;text-align: center;">
+                <b style="color:red;">
+                    <?php
+                        if (isset($_GET['err']))
+                        {
+                            if ($_GET['err'] == 'verif')
+                            {
+                                echo "Verifier votre login ou mot de passe";
+                            }
+                        }
+                    ?>
+                </b>
+            </div>
+            <button type="submit" class="ui button purple">Se connecter</button><br>
         </form>
     </div>
     

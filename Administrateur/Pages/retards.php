@@ -18,7 +18,9 @@
 <div id="addPresence"></div>
 <div id="verif-presence">
   <div class="bg-color" id="verifPresenceDiv">
-    <div class="top">Verification des presences</div>
+    <div class="title">
+      <h3>Verification des presences</h3>
+    </div>
     <div class="search ui form">
       <div style="display: flex;align-items: stretch; flex-direction: row;">
         <label for="datePresence" class="ui label">Date</label>
@@ -85,7 +87,7 @@
 
       } else {
         ?>
-        <div>Pas de donnée</div>
+        <div class="noDataEmploye">Pas de donnée</div>
         <?php
       }
     ?>

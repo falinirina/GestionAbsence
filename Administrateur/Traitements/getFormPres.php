@@ -10,7 +10,9 @@
         {
             ?>
             <div class="bg-color">
-                <div class="top"><?= $fullDateText; ?></div>
+                <div class="title">
+                    <h4><?= $fullDateText; ?></h4>
+                </div>
                 <div class="top2"><?= $_POST['nom'] ?></div>
                 <div class="ui form">
                     <label class="ui label" for="entree">Entree</label>
@@ -34,7 +36,9 @@
         } else {
             ?>
             <div class="bg-color">
-                <div class="top"><?= $fullDateText; ?></div>
+                <div class="title">
+                    <h4><?= $fullDateText; ?></h4>
+                </div>
                 <div class="top2"><?= $_POST['nom'] ?></div>
                 <div class="ui form">
                     <label class="ui label" for="entree">Entree</label>
@@ -66,7 +70,7 @@
                     absent: 'oui',
                     matin: '<?= $_POST['matin']; ?>'
                 }, function(data){
-                    console.log(data)
+                    // console.log(data)
                     if (data == "done")
                     {
                         $("#addPresence").css("display", "none")

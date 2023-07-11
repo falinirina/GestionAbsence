@@ -4,7 +4,9 @@
     {
         ?>
             <div class="bg-color">
-                <div class="ui title">Modification Département</div>
+                <div class="title">
+                    <h4>Modification Département</h4>
+                </div>
                 <div class="ui form">
                     <label for="mNomDepart" class="ui label">Nom departement</label>
                     <input type="text" name="mNomDepart" id="mNomDepart" value="<?= $_POST['nom'] ?>">

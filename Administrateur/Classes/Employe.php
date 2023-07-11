@@ -57,6 +57,7 @@
                     <div class="iIcon">
                         <i class="ui icon edit" id="employe<?= $employe['idEmploye'] ?>"></i>
                         <i class="ui icon trash" id="demploye<?= $employe['idEmploye'] ?>"></i>
+                        <i class="ui icon key" onclick="resetKey(<?= $employe['idEmploye'] ?>)"></i>
                     </div>
                 </div>
                 <?php

@@ -45,10 +45,10 @@
                         header("Location:Connected/");
                     }
                 } else {
-                    header("Location:./?err=verif2");
+                    header("Location:./?err=verif&us=$username");
                 }
             } else {
-                header("Location:./?err=verif1");
+                header("Location:./?err=verif");
             }
         } else {
             header("Location:./?err=vide");

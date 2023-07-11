@@ -29,8 +29,15 @@ body{
 #search{
     color: white;
 }
-#searchEmpl {
+#searchEmpl, #mNomDepart, #departementText, #entree input, #sortie input, #aPass, #cPass, #nPass, #passwordMod{
     background-color: #ffffff00;
     border: solid 1px;
     color: white;
+}
+.filtre-employes, .filtre-retard{
+    padding: 15px 15px 50px 15px;
+    background: linear-gradient(45deg, #a21ee98c, #9d0beca1);
+}
+.ajouter-label {
+    background: linear-gradient(45deg, #a21ee9, #9d0bec);
 }
