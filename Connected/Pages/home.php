@@ -221,6 +221,7 @@
     background-color: #00000087;
     height: 100%;
     overflow-y: auto;
+    z-index: 50;
     }
     .switch {
   position: relative;

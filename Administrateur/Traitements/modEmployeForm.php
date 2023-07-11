@@ -81,6 +81,9 @@
         $("#mEmbauche").change(function(){
             enableBtn()
         })
+        $("#mDepartement").change(function(){
+            enableBtn()
+        })
         $("#mSexe").change(function(){
             const sexe = $(this).val()
             if (sexe == 'F')
