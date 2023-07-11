@@ -383,3 +383,21 @@
   width: 100%;
   text-align: center;
 }
+
+
+@media (max-width: 993px)
+{
+    .menuShow {
+        display: block;
+    }
+    #verif-presence, #add-font, #view, #addPresence {
+        width: 100%;
+    }
+    #modplusplus {
+      width: 100%;
+      left: 0;
+    }
+}
+.menuShow>.ui.icon.list{
+  font-size: 30px;
+}

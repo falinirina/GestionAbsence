@@ -132,7 +132,7 @@
 
 }
 #verifPresenceDiv {
-    margin-left: -100px;
+    /* margin-left: -100px; */
     width: 570px;
     padding: 10px;
     border-radius: 10px;

@@ -39,9 +39,10 @@
                                 notification("Erreur de suppression de l'employé")
                             }
                             afficheData()
+                            // console.log(data)
                         })
                     }
-                    console.log(password)
+                    // console.log(password)
                 })
             </script>
         </div>

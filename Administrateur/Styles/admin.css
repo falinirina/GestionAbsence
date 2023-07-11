@@ -376,6 +376,9 @@ border-radius: 15px;
     animation: 0.5s fromRight;
     z-index: 100;
 }
+.menuShow {
+    display: none;
+}
 @keyframes fromRight{
     from {
         right: -200px;

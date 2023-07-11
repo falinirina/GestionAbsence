@@ -28,7 +28,7 @@
 </div>
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" id="mySidebar">
   <a class="w3-bar-item w3-button w3-border-bottom w3-large" id="nav-logo" href="#"><img src="../logo.png" alt="Logo Entreprise"></a>
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Fermer <i class="fa fa-remove"></i></a>
   <a class="w3-bar-item w3-button w3-teal">Gerer les employes</a>
   <a class="w3-bar-item w3-button">Retards et Absences</a>
   <a class="w3-bar-item w3-button" style="bottom: 54px;position: absolute;">Changer Mot de passe<i style="float: right;" class="ui icon key"></i></a>
@@ -38,6 +38,9 @@
 <div class="w3-main" style="margin-left:250px;padding: 15px;">
 
 <div id="nav-pages">
+  <div class="menuShow" onclick="w3_open()">
+    <i class="ui icon list"></i>
+  </div>
   <table>
     <tr><td>Pages</td><td>/</td><td id="pageNow">Tableau de bord</td></tr>
     <tr><td id="pageNow2" colspan=3>Tableau de bord</td></tr>
@@ -102,7 +105,7 @@
 function changePage(getindex)
 {
     console.log(getindex)
-    if (getindex!=6 && getindex != 0 && getindex != 4 && getindex != 5)
+    if (getindex!=1 && getindex != 0 && getindex != 4 && getindex != 5)
     {
         $(".w3-bar-item.w3-button.w3-teal").attr("class","w3-bar-item w3-button")
         $(".w3-bar-item.w3-button:nth-child("+(getindex+1)+")").attr("class","w3-bar-item w3-button w3-teal")
@@ -139,6 +142,14 @@ function changeMdp()
 }
 function deconnection(){
   document.location = "Traitements/deconnection.php"
+}
+function w3_open() {
+  // console.log("teste")
+  $("#mySidebar").css('display',"block")
+}
+
+function w3_close() {
+  $("#mySidebar").css('display',"none")
 }
 </script>
 <style>

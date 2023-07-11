@@ -19,8 +19,6 @@
                 $info = $info->fetch();
                 $bdd->query("DELETE FROM employe WHERE idEmploye='$id'");
         
-                $file = "../../Photos".$info['photoEmploye'];
-                unlink($file);
                 
                 echo "done";
             }
