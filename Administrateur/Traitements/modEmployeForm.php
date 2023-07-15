@@ -12,6 +12,7 @@
     <div id="form-modifier" class="form01 ui form bg-color">
         <div class="photo"><input type="file" style="display:none" id="mPhoto" >
             <img src="../Photos/<?=$employe['photoEmploye'];?>" alt="Ajouter" id="mAdd-photo">
+            <input type="file" name="photo" style="display:none" id="mPhoto">
         </div>
         <div class="leftEmployeForm">
             <div class="ajouter-label">
@@ -33,7 +34,7 @@
                     </div>
                     <div class="employeFlexBoxDiv">
                         <label class="ui label" for="sexe">Sexe employé<b class="sexeLbl"></b></label>
-                        <select id="mSexe" disabled>
+                        <select id="mSexe">
                             <option value="M">Masculin</option>
                             <option value="F" <?php if ($employe['sexeEmploye'] == 'F') { echo "selected"; } ?>>Feminin</option>
                         </select>
@@ -60,8 +61,50 @@
         </div>
     </div>
     <script>
+        $("#mPhoto").change(function(){
+            $(".mButton .ui.button.blue").removeAttr('disabled')
+        })
         $(".mButton .ui.button.red").click(function(){
             mClose()
+        })
+        $("#mAdd-photo").click(function(){
+            $("#mPhoto").click();
+        })
+        $("#mPhoto").change(function(){
+            var img = document.getElementById("mPhoto")
+            const [file] = img.files
+            if (file) {
+                var url = URL.createObjectURL(file)
+                $("#mAdd-photo").attr('src',url)
+            }
+        })
+        $("#mSexe").change(function(){
+            const sexe = $(this).val()
+            if (sexe == 'F')
+            {
+                $(".sexeLbl").text('e')
+                $("#mNom").attr('placeholder',"Nom employée")
+                $("#mPrenom").attr('placeholder',"Prénom employée")
+                $("#mAdresse").attr('placeholder',"Adresse employée")
+                $("#mNumero").attr('placeholder',"Numéro employée")
+                const photo = $("#mAdd-photo").attr("src")
+                if (photo == "../Photos/user-profile.png")
+                {
+                    $("#mAdd-photo").attr("src", "../Photos/user-profile-woman.png")
+                }
+            } else {
+                $(".sexeLbl").text("")
+                $("#mNom").attr('placeholder',"Nom employé")
+                $("#mPrenom").attr('placeholder',"Prénom employé")
+                $("#mAdresse").attr('placeholder',"Adresse employé")
+                $("#mNumero").attr('placeholder',"Numéro employé")
+                const photo = $("#mAdd-photo").attr("src")
+                if (photo == "../Photos/user-profile-woman.png")
+                {
+                    $("#mAdd-photo").attr("src", "../Photos/user-profile.png")
+                }
+            }
+            enableBtn()
         })
         function enableBtn()
         {
@@ -89,6 +132,7 @@
         })
         $(".mButton .ui.button.blue").click(function(){
             var id = this.id
+            const files = $("#mPhoto")[0].files
             id = id.substr(6)
             const data = {
                 id: (this.id).substr(6),
@@ -120,7 +164,8 @@
                             formData.append('numero',data['numero'])
                             formData.append('embauche',data['embauche'])
                             formData.append('departement',data['departement'])
-                            formData.append('sexe',data['sexe'])
+                            formData.append('sexe',data['sexe']),
+                            formData.append('img',files[0])
                             $.ajax({
                                 url: 'Traitements/modEmployeOp.php',
                                 type: 'post',
@@ -129,10 +174,33 @@
                                 processData: false,
                                 success:function(response)
                                 {
+                                    console.log(response)
                                     if(response=='done'){
                                         mClose()
                                         afficheData()
                                         notification("Employé modifié avec succès")
+                                    } else {
+                                        notification("Il y a une erreur lors de la modification")
+                                    }
+                                }
+                            })
+                        } else {
+                            var formData = new FormData()
+                            formData.append('id',data['id'])
+                            formData.append('img',files[0])
+                            $.ajax({
+                                url: 'Traitements/modEmployeOp.php',
+                                type: 'post',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success:function(response)
+                                {
+                                    console.log(response)
+                                    if(response=='done'){
+                                        mClose()
+                                        afficheData()
+                                        notification("Photo modifié avec succès")
                                     } else {
                                         notification("Il y a une erreur lors de la modification")
                                     }

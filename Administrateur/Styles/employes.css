@@ -11,7 +11,7 @@
   }
   #form-ajouter, #form-modifier{
     animation: cube 0.2s;
-    margin-left: -250px;
+    /* margin-left: -250px; */
     padding: 30px 20px;
     width: 675px;
     border-radius: 15px;
@@ -73,7 +73,7 @@
   #add-font,#view{
     display: none;
     position: fixed;
-    width: 100%;
+    width: calc(100% - 250px);
     height: 100%;
     margin-left: -15px;
     justify-content: center;
@@ -256,7 +256,7 @@
   }
   #form-departement{
     animation: cube 0.2s;
-    margin-left: -250px;
+    /* margin-left: -250px; */
     padding: 30px 20px;
     width: 500px;
     border-radius: 15px;

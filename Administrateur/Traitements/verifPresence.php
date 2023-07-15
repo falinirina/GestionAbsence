@@ -47,25 +47,28 @@
                                 <?php
                             }
                         } else {
-                            if ($hour > 13 && $hour < 18)
+                            if ($dateJour != 6)
                             {
-                                $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id AND matin='non'");
-                                $dataRow = $data->rowCount();
-                                if ($dataRow == 0)
+                                if ($hour > 13 && $hour < 18)
                                 {
-                                    ?>
-                                    <div>
-                                        <div><?= $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye']; ?></div>
-                                        <button class="ui button red" onclick="absentMidi('<?= $id ?>')">Absent</button>
-                                    </div>
-                                    <?php
+                                    $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id AND matin='non'");
+                                    $dataRow = $data->rowCount();
+                                    if ($dataRow == 0)
+                                    {
+                                        ?>
+                                        <div>
+                                            <div><?= $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye']; ?></div>
+                                            <button class="ui button red" onclick="absentMidi('<?= $id ?>')">Absent</button>
+                                        </div>
+                                        <?php
+                                    }
                                 }
                             }
                         }
 
 
                     } else {
-                        $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id AND absent='non'");
+                        $data = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id");
                         $dataRow = $data->rowCount();
                         // echo $dataRow;
                         if ($dataRow == 0)
@@ -198,10 +201,11 @@
                     absent: 'oui',
                     matin: 'oui'
                 }, function(data){
-                    console.log(data)
+                    // console.log(data)
                     if (data == "done")
                     {
                         refreshView()
+                        notification("Employé a été marqué absent avec succès")
                     }
                 })
         }
@@ -213,10 +217,11 @@
                     absent: 'oui',
                     matin: 'non'
                 }, function(data){
-                    console.log(data)
+                    // console.log(data)
                     if (data == "done")
                     {
                         refreshView()
+                        notification("Employé a été marqué absent avec succès")
                     }
                 })
         }

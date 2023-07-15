@@ -71,6 +71,7 @@
                     {
                         $("#addPresence").css("display", "none")
                         $("#addPresence").html("")
+                        notification("Employé a été marqué absent avec succès")
                         refreshView()
                     }
                 })
@@ -88,6 +89,7 @@
                     {
                         $("#addPresence").css("display", "none")
                         $("#addPresence").html("")
+                        notification("La présence a été ajouté avec succès")
                         refreshView()
                     }
                 })

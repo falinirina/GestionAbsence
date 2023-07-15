@@ -119,7 +119,7 @@
 #verif-presence{
     display: none;
     position: fixed;
-    width: 100%;
+    width: calc(100% - 250px);
     height: 100%;
     margin-left: -15px;
     justify-content: center;
@@ -168,7 +168,7 @@
 #addPresence{
     display: none;
     position: fixed;
-    width: 100%;
+    width: calc(100% - 250px);
     height: 100%;
     margin-left: -15px;
     justify-content: center;

@@ -54,14 +54,22 @@
             $("#prenom").attr('placeholder',"Prénom employée")
             $("#adresse").attr('placeholder',"Adresse employée")
             $("#numero").attr('placeholder',"Numéro employée")
-            $("#add-photo").attr("src", "../Photos/user-profile-woman.png")
+            const photo = $("#add-photo").attr("src")
+            if (photo == "../Photos/user-profile.png")
+            {
+                $("#add-photo").attr("src", "../Photos/user-profile-woman.png")
+            }
         } else {
             $(".sexeLbl").text("")
             $("#nom").attr('placeholder',"Nom employé")
             $("#prenom").attr('placeholder',"Prénom employé")
             $("#adresse").attr('placeholder',"Adresse employé")
             $("#numero").attr('placeholder',"Numéro employé")
-            $("#add-photo").attr("src", "../Photos/user-profile.png")
+            const photo = $("#add-photo").attr("src")
+            if (photo == "../Photos/user-profile-woman.png")
+            {
+                $("#add-photo").attr("src", "../Photos/user-profile.png")
+            }
         }
     })
     departementInit()
