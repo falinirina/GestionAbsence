@@ -23,9 +23,12 @@
                     <div id="sortie">
                         <input type="number" id="shour" min="10" max="12" value="12">:<input type="number" id="smin" min="0" max="59" value="0">
                     </div>
-                    <div class="absent">
-                        <button class="ui button red" onclick="absentThis()">Absent</button>
-                    </div>
+                    <label class="ui label" for="remarque">Remarque</label>
+                    <select id="remarque">
+                        <option value="Oublie">Oublie</option>
+                        <option value="Malade">Malade</option>
+                        <option value="Congé">Congé</option>
+                    </select>
                 </div>
                 <div class="bottom">
                     <button class="ui green button" onclick="sendThis()">Ajouter</button>
@@ -49,9 +52,12 @@
                     <div id="sortie">
                         <input type="number" id="shour" min="16" max="21" value="18">:<input type="number" id="smin" min="0" max="59" value="0">
                     </div>
-                    <div class="absent">
-                        <button class="ui button red" onclick="absentThis()">Absent</button>
-                    </div>
+                    <label class="ui label" for="remarque">Remarque</label>
+                    <select id="remarque">
+                        <option value="Oublie">Oublie</option>
+                        <option value="Malade">Malade</option>
+                        <option value="Congé">Congé</option>
+                    </select>
                 </div>
                 <div class="bottom">
                     <button class="ui green button" onclick="sendThis()">Ajouter</button>
@@ -62,41 +68,50 @@
         }
         ?>
         <script>
-            function absentThis()
+            function absentThis(remarque)
             {
                 $.post("Traitements/addPresence.php", {
                     id: '<?= $_POST['id'] ?>',
                     date: '<?= $_POST['date'] ?>',
                     absent: 'oui',
-                    matin: '<?= $_POST['matin']; ?>'
+                    matin: '<?= $_POST['matin']; ?>',
+                    remarque: remarque
                 }, function(data){
                     // console.log(data)
                     if (data == "done")
                     {
                         $("#addPresence").css("display", "none")
                         $("#addPresence").html("")
-                        notification("Employé a été marqué absent avec succès")
+                        notification(`Employé a été marqué comme ${remarque} avec succès`)
                         refreshView()
                     }
                 })
             }
             function sendThis()
             {
-                $.post("Traitements/addPresence.php", {
-                    id: '<?= $_POST['id'] ?>',
-                    date: '<?= $_POST['date'] ?>',
-                    entree: [$("#ehour").val(),$("#emin").val()],
-                    sortie: [$("#shour").val(),$("#smin").val()],
-                    matin: '<?= $_POST['matin']; ?>'
-                }, function(data){
-                    if (data == "done")
-                    {
-                        $("#addPresence").css("display", "none")
-                        $("#addPresence").html("")
-                        notification("La présence a été ajouté avec succès")
-                        refreshView()
-                    }
-                })
+                const remarque = ($("#remarque").val()).toLowerCase()
+                // console.log(remarque)
+                if (remarque == "oublie")
+                {
+                    $.post("Traitements/addPresence.php", {
+                        id: '<?= $_POST['id'] ?>',
+                        date: '<?= $_POST['date'] ?>',
+                        entree: [$("#ehour").val(),$("#emin").val()],
+                        sortie: [$("#shour").val(),$("#smin").val()],
+                        matin: '<?= $_POST['matin']; ?>',
+                        remarque: remarque
+                    }, function(data){
+                        if (data == "done")
+                        {
+                            $("#addPresence").css("display", "none")
+                            $("#addPresence").html("")
+                            notification("La présence a été ajouté avec succès")
+                            refreshView()
+                        }
+                    })
+                } else {
+                    absentThis(remarque)
+                }
             }
             function closeThis()
             {

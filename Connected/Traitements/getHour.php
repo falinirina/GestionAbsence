@@ -1,6 +1,7 @@
 <?php
     if (isset($_POST['result']))
     {
+        require_once "../../timezone.php";
         $result = htmlspecialchars($_POST['result']);
         $date = date_create();
         if ($result == 'h')

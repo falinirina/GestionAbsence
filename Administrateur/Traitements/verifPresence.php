@@ -42,7 +42,8 @@
                                 ?>
                                 <div>
                                     <div><?= $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye']; ?></div>
-                                    <button class="ui button red" onclick="absentMatin('<?= $id ?>')">Absent</button>
+                                    <button class="ui button green" onclick="congeMatin('<?= $id ?>')">Congé</button>
+                                    <button class="ui button red" onclick="absentMatin('<?= $id ?>')">Malade</button>
                                 </div>
                                 <?php
                             }
@@ -58,7 +59,8 @@
                                         ?>
                                         <div>
                                             <div><?= $mpiasa['nomEmploye']." ".$mpiasa['prenomEmploye']; ?></div>
-                                            <button class="ui button red" onclick="absentMidi('<?= $id ?>')">Absent</button>
+                                            <button class="ui button green" onclick="congeMidi('<?= $id ?>')">Congé</button>
+                                            <button class="ui button red" onclick="absentMidi('<?= $id ?>')">Malade</button>
                                         </div>
                                         <?php
                                     }
@@ -199,7 +201,8 @@
                     id: getId,
                     date: '<?= $date ?>',
                     absent: 'oui',
-                    matin: 'oui'
+                    matin: 'oui',
+                    remarque: 'malade'
                 }, function(data){
                     // console.log(data)
                     if (data == "done")
@@ -209,19 +212,54 @@
                     }
                 })
         }
+        function congeMatin(getId)
+        {
+            $.post("Traitements/addPresence.php", {
+                    id: getId,
+                    date: '<?= $date ?>',
+                    absent: 'oui',
+                    matin: 'oui',
+                    remarque: 'congé'
+                }, function(data){
+                    // console.log(data)
+                    if (data == "done")
+                    {
+                        refreshView()
+                        notification("Employé a été marqué congé avec succès")
+                    }
+                })
+        }
         function absentMidi(getId)
         {
             $.post("Traitements/addPresence.php", {
                     id: getId,
                     date: '<?= $date ?>',
                     absent: 'oui',
-                    matin: 'non'
+                    matin: 'non',
+                    remarque: 'malade'
                 }, function(data){
                     // console.log(data)
                     if (data == "done")
                     {
                         refreshView()
                         notification("Employé a été marqué absent avec succès")
+                    }
+                })
+        }
+        function congeMidi(getId)
+        {
+            $.post("Traitements/addPresence.php", {
+                    id: getId,
+                    date: '<?= $date ?>',
+                    absent: 'oui',
+                    matin: 'non',
+                    remarque: 'congé'
+                }, function(data){
+                    // console.log(data)
+                    if (data == "done")
+                    {
+                        refreshView()
+                        notification("Employé a été marqué congé avec succès")
                     }
                 })
         }

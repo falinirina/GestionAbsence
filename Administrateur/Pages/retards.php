@@ -19,7 +19,7 @@
 <div id="verif-presence">
   <div class="bg-color" id="verifPresenceDiv">
     <div class="title">
-      <h3>Verification des presences</h3>
+      <h3>Verification des pointages</h3>
     </div>
     <div class="search ui form">
       <div style="display: flex;align-items: stretch; flex-direction: row;">
@@ -51,7 +51,7 @@
   </div>
 </div>
 <div class="filtre-retard">
-  <button class="ui button" onclick="afficherPresence()">Verification Presence</button>
+  <button class="ui button" onclick="afficherPresence()">Verification Pointage</button>
 </div>
 <div class="cont-employesFilter">
   <div class="listeEmpFilter bg-color">

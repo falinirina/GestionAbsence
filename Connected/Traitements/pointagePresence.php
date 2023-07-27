@@ -3,6 +3,7 @@
     if (isset($_SESSION['utilisateur']) && isset($_SESSION['infoUtilisateur']) && isset($_POST['action']))
     {
         require_once "../../Administrateur/Traitements/config.php";
+        // require_once "../../timezone.php";
 
         $action = htmlspecialchars($_POST['action']);
         

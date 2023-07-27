@@ -22,10 +22,11 @@
                             <div>Nom: <b><?= $employe['nomEmploye']; ?></b></div>
                             <div>Prenom: <b><?= $employe['prenomEmploye']; ?></b></div>
                             <div>Numero: <b><?= $employe['numeroEmploye']; ?></b></div>
+                            <div>Departement: <b><?= $employe['nomDepartement']; ?></b></div>
                         </div>
                         <div>
-                            <div>Departement: <b><?= $employe['nomDepartement']; ?></b></div>
-                            <div>Utilisateur: <b><?= $employe['username']; ?></b></div>
+                            <!-- <div>Utilisateur: <b><?= $employe['username']; ?></b></div> -->
+                            <button class="ui button" onclick="viewDetails()">Plus de details</button>
                         </div>
                     </div>
                 </div>
@@ -68,6 +69,49 @@
                 </div>
                 
             </div>
+            <div id="viewDetails">
+                <div class="bg-color">
+                    <div class="topInfoEmp">
+                        <div class="imgEmpInfo">
+                            <img src="../Photos/<?= $employe['photoEmploye']; ?>" alt="Image">
+                        </div>
+                        <div class="infoEmpConf">
+                            <div>
+                                <div>Nom: <b><?= $employe['nomEmploye']; ?></b></div>
+                                <div>Prenom: <b><?= $employe['prenomEmploye']; ?></b></div>
+                                <div>Numero: <b><?= $employe['numeroEmploye']; ?></b></div>
+                                <div>Departement: <b><?= $employe['nomDepartement']; ?></b></div>
+                            </div>
+                            <div>
+                                <div>Identifiant: <b><?= $employe['idEmploye']; ?></b></div>
+                                <div>Utilisateur: <b><?= $employe['username']; ?></b></div>
+                                <div>Sexe: <b><?php 
+                                    if ($employe['sexeEmploye'] == 'M') { echo "Masculin"; } 
+                                    else { echo "Feminin"; }
+                                ?></b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="centerInfoEmp">
+                        <div class="filtreDate">
+                            <div class="ui form">
+                                <label for="filtreDate" class="ui label">Date</label>
+                                <input type="date" id="filtreDate" min="<?=$dateMin;?>" value="<?=$dateMin;?>" max="<?=$dateMax;?>">
+                            </div>
+                            <div>
+                                <button class="ui blue button" onclick="searchLaunch()">Chercher</button>
+                            </div>
+                        </div>
+                        <div id="resultSearch"></div>
+                    </div>
+                    <div class="bottomInfoEmp" style="
+                        text-align: right;
+                    ">
+                        <button class="ui button red" onclick="closeThis()">Fermer</button>
+                    </div>
+                </div>
+            </div>
             <?php
                 if ($verification > 0)
                 {
@@ -92,6 +136,24 @@
                         $("#resultRetard").html(data)
                     })
                 })
+                function viewDetails()
+                {
+                    $("#viewDetails").css("display", "flex")
+                }
+                function closeThis()
+                {
+                    $("#viewDetails").css("display", "none")
+                }
+                function searchLaunch()
+                {
+                    date = $("#filtreDate").val()
+                    $.post("Traitements/infoPresence.php",{
+                        date: date,
+                        id: '<?= $id; ?>'
+                    }, function (data) {
+                        $("#resultSearch").html(data)
+                    })
+                }
             </script>
             <?php
                 }

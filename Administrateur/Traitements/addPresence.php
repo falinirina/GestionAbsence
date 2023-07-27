@@ -58,22 +58,42 @@
                     $traivailMinute = 240 - $avance - $retard + $heureSupE + $heureSupS;
                     $traivailMinute = (int)$traivailMinute;
     
-    
-                    $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, heureEntree, heureSortie, retardMinute,avanceMinute, matin, travailMinute)
-                    VALUES (:jourPresence,:employePresence,:heureEntree,:heureSortie,:retardMinute,:avanceMinute,:matin,:travailMinute)");
-                    $check = $insert->execute(array(
-                        'jourPresence'=>$date,
-                        'employePresence'=>$id,
-                        'heureEntree'=>$entree,
-                        'heureSortie'=>$sortie,
-                        'retardMinute'=>$retard,
-                        'avanceMinute'=>$avance,
-                        'matin'=>$matin,
-                        'travailMinute'=>$traivailMinute 
-                    ));
-                    if ($check)
+                    if (isset($_POST['remarque']))
                     {
-                        echo "done";
+                        $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, heureEntree, heureSortie, retardMinute,avanceMinute, matin, travailMinute, remarque)
+                        VALUES (:jourPresence,:employePresence,:heureEntree,:heureSortie,:retardMinute,:avanceMinute,:matin,:travailMinute,:remarque)");
+                        $check = $insert->execute(array(
+                            'jourPresence'=>$date,
+                            'employePresence'=>$id,
+                            'heureEntree'=>$entree,
+                            'heureSortie'=>$sortie,
+                            'retardMinute'=>$retard,
+                            'avanceMinute'=>$avance,
+                            'matin'=>$matin,
+                            'travailMinute'=>$traivailMinute,
+                            'remarque'=>$_POST['remarque']
+                        ));
+                        if ($check)
+                        {
+                            echo "done";
+                        }
+                    } else {
+                        $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, heureEntree, heureSortie, retardMinute,avanceMinute, matin, travailMinute)
+                        VALUES (:jourPresence,:employePresence,:heureEntree,:heureSortie,:retardMinute,:avanceMinute,:matin,:travailMinute)");
+                        $check = $insert->execute(array(
+                            'jourPresence'=>$date,
+                            'employePresence'=>$id,
+                            'heureEntree'=>$entree,
+                            'heureSortie'=>$sortie,
+                            'retardMinute'=>$retard,
+                            'avanceMinute'=>$avance,
+                            'matin'=>$matin,
+                            'travailMinute'=>$traivailMinute 
+                        ));
+                        if ($check)
+                        {
+                            echo "done";
+                        }
                     }
                 } else if ($_POST['matin'] == 'non')
                 {
@@ -98,28 +118,48 @@
                     $traivailMinute = 240 - $avance - $retard + $heureSupE + $heureSupS;
                     $traivailMinute = (int)$traivailMinute;
     
-    
-                    $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, heureEntree, heureSortie, retardMinute,avanceMinute, matin, travailMinute)
-                    VALUES (:jourPresence,:employePresence,:heureEntree,:heureSortie,:retardMinute,:avanceMinute,:matin,:travailMinute)");
-                    $check = $insert->execute(array(
-                        'jourPresence'=>$date,
-                        'employePresence'=>$id,
-                        'heureEntree'=>$entree,
-                        'heureSortie'=>$sortie,
-                        'retardMinute'=>$retard,
-                        'avanceMinute'=>$avance,
-                        'matin'=>$matin,
-                        'travailMinute'=>$traivailMinute 
-                    ));
-                    if ($check)
+                    if (isset($_POST['remarque']))
                     {
-                        echo "done";
+                        $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, heureEntree, heureSortie, retardMinute,avanceMinute, matin, travailMinute, remarque)
+                        VALUES (:jourPresence,:employePresence,:heureEntree,:heureSortie,:retardMinute,:avanceMinute,:matin,:travailMinute,:remarque)");
+                        $check = $insert->execute(array(
+                            'jourPresence'=>$date,
+                            'employePresence'=>$id,
+                            'heureEntree'=>$entree,
+                            'heureSortie'=>$sortie,
+                            'retardMinute'=>$retard,
+                            'avanceMinute'=>$avance,
+                            'matin'=>$matin,
+                            'travailMinute'=>$traivailMinute,
+                            'remarque'=>$_POST['remarque']
+                        ));
+                        if ($check)
+                        {
+                            echo "done";
+                        }
+                    } else {
+                        $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, heureEntree, heureSortie, retardMinute,avanceMinute, matin, travailMinute)
+                        VALUES (:jourPresence,:employePresence,:heureEntree,:heureSortie,:retardMinute,:avanceMinute,:matin,:travailMinute)");
+                        $check = $insert->execute(array(
+                            'jourPresence'=>$date,
+                            'employePresence'=>$id,
+                            'heureEntree'=>$entree,
+                            'heureSortie'=>$sortie,
+                            'retardMinute'=>$retard,
+                            'avanceMinute'=>$avance,
+                            'matin'=>$matin,
+                            'travailMinute'=>$traivailMinute 
+                        ));
+                        if ($check)
+                        {
+                            echo "done";
+                        }
                     }
                 }
             }
             
         } else {
-            if (isset($_POST['id']) && isset($_POST['absent']) && isset($_POST['date']))
+            if (isset($_POST['id']) && isset($_POST['absent']) && isset($_POST['date']) && isset($_POST['remarque']))
             {
                 require_once "./config.php";
 
@@ -127,18 +167,20 @@
                 $absent = htmlspecialchars($_POST['absent']);
                 $date = htmlspecialchars($_POST['date']);
                 $matin = htmlspecialchars($_POST['matin']);
+                $remarque = htmlspecialchars($_POST['remarque']);
 
                 $check = $bdd->query("SELECT * FROM presence WHERE jourPresence='$date' AND employePresence=$id AND matin='$matin'");
                 $check = $check->rowCount();
                 if ($check == 0)
                 {
-                    $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, matin, absent)
-                    VALUES (:jourPresence,:employePresence,:matin,:absent)");
+                    $insert = $bdd->prepare("INSERT INTO presence(jourPresence, employePresence, matin, absent, remarque)
+                    VALUES (:jourPresence,:employePresence,:matin,:absent,:remarque)");
                     $check = $insert->execute(array(
                         'jourPresence'=>$date,
                         'employePresence'=>$id,
                         'matin'=>$matin,
-                        'absent'=>$absent
+                        'absent'=>$absent,
+                        'remarque'=>$remarque
                     ));
                     if ($check)
                     {
