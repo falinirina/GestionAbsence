@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 10 juil. 2023 à 20:44
+-- Généré le : mer. 02 août 2023 à 21:07
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 7.4.29
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `employeproject`
 --
-CREATE DATABASE IF NOT EXISTS `employeproject` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `employeproject`;
 
 -- --------------------------------------------------------
 
@@ -79,7 +77,8 @@ CREATE TABLE `presence` (
   `avanceMinute` int(11) DEFAULT NULL,
   `travailMinute` int(11) DEFAULT NULL,
   `absent` varchar(3) NOT NULL DEFAULT 'non',
-  `matin` varchar(3) NOT NULL DEFAULT 'oui'
+  `matin` varchar(3) NOT NULL DEFAULT 'oui',
+  `remarque` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
